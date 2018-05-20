@@ -1,5 +1,6 @@
 use v6.c;
-unit module P5getprotobyname:ver<0.0.1>:auth<cpan:ELIZABETH>;
+
+unit module P5getprotobyname:ver<0.0.2>:auth<cpan:ELIZABETH>;
 
 use NativeCall;
 
@@ -89,6 +90,31 @@ This module tries to mimic the behaviour of the C<getprotobyname> and
 associated functions of Perl 5 as closely as possible.  It exports by default:
 
     endprotoent getprotobyname getprotobynumber getprotoent setprotoent
+
+=head1 ORIGINAL PERL 5 DOCUMENTATION
+
+    getprotobyname NAME
+    getprotobynumber NUMBER
+    getprotoent
+    setprotoent STAYOPEN
+    endprotoent
+            These routines are the same as their counterparts in the system C
+            library. In list context, the return values from the various get
+            routines are as follows:
+
+             # 0        1          2           3         4
+             ( $name,   $aliases,  $proto                ) = getproto*
+
+            In scalar context, you get the name, unless the function was a
+            lookup by name, in which case you get the other thing, whatever it
+            is. (If the entry doesn't exist you get the undefined value.)
+
+            The "getprotobynumber" function, even though it only takes one
+            argument, has the precedence of a list operator, so beware:
+
+                getprotobynumber $number eq 'icmp'   # WRONG
+                getprotobynumber($number eq 'icmp')  # actually means this
+                getprotobynumber($number) eq 'icmp'  # better this way
 
 =head1 AUTHOR
 

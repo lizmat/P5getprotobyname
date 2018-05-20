@@ -24,6 +24,32 @@ This module tries to mimic the behaviour of the `getprotobyname` and associated 
 
     endprotoent getprotobyname getprotobynumber getprotoent setprotoent
 
+ORIGINAL PERL 5 DOCUMENTATION
+=============================
+
+    getprotobyname NAME
+    getprotobynumber NUMBER
+    getprotoent
+    setprotoent STAYOPEN
+    endprotoent
+            These routines are the same as their counterparts in the system C
+            library. In list context, the return values from the various get
+            routines are as follows:
+
+             # 0        1          2           3         4
+             ( $name,   $aliases,  $proto                ) = getproto*
+
+            In scalar context, you get the name, unless the function was a
+            lookup by name, in which case you get the other thing, whatever it
+            is. (If the entry doesn't exist you get the undefined value.)
+
+            The "getprotobynumber" function, even though it only takes one
+            argument, has the precedence of a list operator, so beware:
+
+                getprotobynumber $number eq 'icmp'   # WRONG
+                getprotobynumber($number eq 'icmp')  # actually means this
+                getprotobynumber($number) eq 'icmp'  # better this way
+
 AUTHOR
 ======
 
