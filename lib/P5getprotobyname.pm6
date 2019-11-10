@@ -1,6 +1,6 @@
 use v6.c;
 
-unit module P5getprotobyname:ver<0.0.3>:auth<cpan:ELIZABETH>;
+unit module P5getprotobyname:ver<0.0.4>:auth<cpan:ELIZABETH>;
 
 use NativeCall;
 
@@ -84,19 +84,19 @@ multi sub getprotoent() { _getprotoent.list }
 my sub setprotoent($stayopen) is export {
     my int32 $nstayopen = ?$stayopen;
     _setprotoent($nstayopen);
-    1;  # this is apparently what Perl 5 does, although not documented
+    1;  # this is apparently what Perl does, although not documented
 }
 
 my sub endprotoent() is export {
     _endprotoent;
-    1;  # this is apparently what Perl 5 does, although not documented
+    1;  # this is apparently what Perl does, although not documented
 }
 
 =begin pod
 
 =head1 NAME
 
-P5getprotobyname - Implement Perl 5's getprotobyname() and associated built-ins
+P5getprotobyname - Implement Perl's getprotobyname() and associated built-ins
 
 =head1 SYNOPSIS
 
@@ -112,7 +112,7 @@ P5getprotobyname - Implement Perl 5's getprotobyname() and associated built-ins
 =head1 DESCRIPTION
 
 This module tries to mimic the behaviour of the C<getprotobyname> and
-associated functions of Perl 5 as closely as possible.  It exports by default:
+associated functions of Perl as closely as possible.  It exports by default:
 
     endprotoent getprotobyname getprotobynumber getprotoent setprotoent
 
@@ -152,7 +152,7 @@ Comments and Pull Requests are welcome.
 
 Copyright 2018-2019 Elizabeth Mattijsen
 
-Re-imagined from Perl 5 as part of the CPAN Butterfly Plan.
+Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
