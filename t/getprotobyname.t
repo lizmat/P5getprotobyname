@@ -1,4 +1,4 @@
-use v6.c;
+use v6.*;
 use Test;
 use P5getprotobyname;
 %*ENV<RAKUDO_NO_DEPRECATIONS> = True;
@@ -44,4 +44,4 @@ is getprotobynumber(99999, :scalar), Nil,
 is-deeply getprotobynumber(99999), (),
   'did lookup by non-existing proto fail';
 
-# vim: ft=perl6 expandtab sw=4
+# vim: expandtab shiftwidth=4

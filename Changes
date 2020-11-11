@@ -2,6 +2,12 @@ Revision history for P5getprotobyname
 
 {{$NEXT}}
 
+0.0.5  2020-11-11T20:28:34+01:00
+    - Change name of distribution
+    - Force to highest possible Raku version
+    - Update copyright year
+    - Add PORTING CAVEATS section about needing POSIX semantics
+
 0.0.4  2019-11-10T14:00:15+01:00
     - changed Perl 5 to Perl
 

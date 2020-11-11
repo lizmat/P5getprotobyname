@@ -1,6 +1,6 @@
-use v6.c;
+use v6.*;
 
-unit module P5getprotobyname:ver<0.0.4>:auth<cpan:ELIZABETH>;
+unit module P5getprotobyname:ver<0.0.5>:auth<cpan:ELIZABETH>;
 
 use NativeCall;
 
@@ -96,7 +96,7 @@ my sub endprotoent() is export {
 
 =head1 NAME
 
-P5getprotobyname - Implement Perl's getprotobyname() and associated built-ins
+Raku port of Perl's getprotobyname() and associated built-ins
 
 =head1 SYNOPSIS
 
@@ -111,8 +111,10 @@ P5getprotobyname - Implement Perl's getprotobyname() and associated built-ins
 
 =head1 DESCRIPTION
 
-This module tries to mimic the behaviour of the C<getprotobyname> and
-associated functions of Perl as closely as possible.  It exports by default:
+This module tries to mimic the behaviour of Perl's C<getprotobyname> and
+associated built-ins as closely as possible in the Raku Programing Language.
+
+It exports by default:
 
     endprotoent getprotobyname getprotobynumber getprotoent setprotoent
 
@@ -141,6 +143,12 @@ associated functions of Perl as closely as possible.  It exports by default:
                 getprotobynumber($number eq 'icmp')  # actually means this
                 getprotobynumber($number) eq 'icmp'  # better this way
 
+=head1 PORTING CAVEATS
+
+This module depends on the availability of POSIX semantics.  This is
+generally not available on Windows, so this module will probably not work
+on Windows.
+
 =head1 AUTHOR
 
 Elizabeth Mattijsen <liz@wenzperl.nl>
@@ -150,10 +158,12 @@ Comments and Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018-2019 Elizabeth Mattijsen
+Copyright 2018-2020 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
 =end pod
+
+# vim: expandtab shiftwidth=4
