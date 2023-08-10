@@ -1,7 +1,3 @@
-use v6.*;
-
-unit module P5getprotobyname:ver<0.0.6>:auth<zef:lizmat>;
-
 use NativeCall;
 
 my class ProtoStruct is repr<CStruct> {
@@ -49,21 +45,10 @@ my proto sub getprotobyname(|) is export {*}
 multi sub getprotobyname(Scalar:U, Str() $name) {
     _getprotobyname($name).scalar(:proto)
 }
-multi sub getprotobyname(Str() $name, :$scalar!)
-  is DEPRECATED('Scalar as first positional')
-{
-    _getprotobyname($name).scalar(:proto)
-}
 multi sub getprotobyname(Str() $name) { _getprotobyname($name).list }
 
 my proto sub getprotobynumber(|) is export {*}
 multi sub getprotobynumber(Scalar:U, Int:D $proto) {
-    my int32 $nproto = $proto;
-    _getprotobynumber($nproto).scalar
-}
-multi sub getprotobynumber(Int:D $proto, :$scalar!)
-  is DEPRECATED('Scalar as first positional')
-{
     my int32 $nproto = $proto;
     _getprotobynumber($nproto).scalar
 }
@@ -74,11 +59,6 @@ multi sub getprotobynumber(Int:D $proto) {
 
 my proto sub getprotoent(|) is export {*}
 multi sub getprotoent(Scalar:U) { _getprotoent.scalar }
-multi sub getprotoent(:$scalar!)
-  is DEPRECATED('Scalar as first positional')
-{
-    _getprotoent.scalar
-}
 multi sub getprotoent() { _getprotoent.list }
 
 my sub setprotoent($stayopen) is export {
@@ -153,12 +133,16 @@ on Windows.
 
 Elizabeth Mattijsen <liz@raku.rocks>
 
+If you like this module, or what I’m doing more generally, committing to a
+L<small sponsorship|https://github.com/sponsors/lizmat/>  would mean a great
+deal to me!
+
 Source can be located at: https://github.com/lizmat/P5getprotobyname .
 Comments and Pull Requests are welcome.
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2018, 2019, 2020, 2021 Elizabeth Mattijsen
+Copyright 2018, 2019, 2020, 2021, 2023 Elizabeth Mattijsen
 
 Re-imagined from Perl as part of the CPAN Butterfly Plan.
 
